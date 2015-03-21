@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">ptel</string>
+    <string name="check_balance">Check da balance</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
