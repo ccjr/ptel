@@ -1,5 +1,9 @@
 package mobi.ccjr.ptel.parser;
 
+/**
+ * This class parses a balance message, format is in test
+ * @author ccarneiroj
+ */
 public class BalanceMessageParser {
 	private String text;
 	
