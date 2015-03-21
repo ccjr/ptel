@@ -1,4 +1,4 @@
-package mobi.ccjr.ptel.fragments;
+package mobi.ccjr.ptel.fragment;
 
 import mobi.ccjr.ptel.R;
 import android.annotation.SuppressLint;
