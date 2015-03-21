@@ -5,6 +5,7 @@ package mobi.ccjr.ptel.parser;
  * @author ccarneiroj
  */
 public class BalanceMessageParser {
+	private static final String ENTRY_DELIMITER = "Airtime:";
 	private String text;
 	
 	public BalanceMessageParser(String text) {
@@ -14,8 +15,7 @@ public class BalanceMessageParser {
 	public String extractBalance() {
 		String[] parts = text.split("[|]", -1);
 		if (parts.length == 4) {
-			StringBuffer sb = new StringBuffer(parts[2]);
-			return sb.replace(0, 10, "").toString().trim();
+			return parts[2].trim().substring(ENTRY_DELIMITER.length()).trim();
 		} else {
 			return null;
 		}
