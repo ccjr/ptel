@@ -12,6 +12,7 @@ tmp/**/*
 .settings/
 .loadpath
 
+app.iml
 .gradle
 /local.properties
 /.idea
