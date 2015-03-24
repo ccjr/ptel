@@ -8,10 +8,17 @@ tmp/**/*
 *.bak
 *.swp
 *~.nib
-local.properties
 .classpath
 .settings/
 .loadpath
+
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/gradle
+/gen
 
 # External tool builders
 .externalToolBuilders/
