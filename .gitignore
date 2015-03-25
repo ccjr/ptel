@@ -12,15 +12,18 @@ tmp/**/*
 .settings/
 .loadpath
 
+# Android Studio
 app.iml
-.gradle
-/local.properties
-/.idea
+*.gradle
+local.properties
+gradle.properties
+gradlew
+gradlew.bat
+.idea/
 .DS_Store
-/build
-/gradle
-/gen
-app/build
+build/
+gradle/
+gen/
 
 # External tool builders
 .externalToolBuilders/
