@@ -14,15 +14,20 @@ import mobi.ccjr.ptel.R;
 
 public class SendFragment extends Fragment implements OnClickListener {
 
-	private Button sendButton;
+	private Button sendButton, callCustomerCareButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View v = inflater.inflate(R.layout.fragment_send, container, false);
+
 		sendButton = (Button) v.findViewById(R.id.send_sms_button);
 		sendButton.setOnClickListener(this);
+
+        callCustomerCareButton = (Button) v.findViewById(R.id.call_customer_care);
+        callCustomerCareButton.setOnClickListener(this);
+
 		return v;
 	}
 
