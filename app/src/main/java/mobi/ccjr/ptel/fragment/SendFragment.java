@@ -54,7 +54,7 @@ public class SendFragment extends Fragment implements OnClickListener {
 
     private void callCustomerCare()
     {
-        //TODO Call Customer Care....611 [SEND]
+        // TODO Call Customer Care....611 [SEND]
     }
 
 

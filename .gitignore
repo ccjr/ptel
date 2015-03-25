@@ -20,6 +20,7 @@ app.iml
 /build
 /gradle
 /gen
+app/build
 
 # External tool builders
 .externalToolBuilders/
