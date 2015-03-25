@@ -1,15 +1,16 @@
 package mobi.ccjr.ptel.fragment;
 
-import mobi.ccjr.ptel.R;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+
+import mobi.ccjr.ptel.R;
 
 public class SendFragment extends Fragment implements OnClickListener {
 
@@ -28,9 +29,29 @@ public class SendFragment extends Fragment implements OnClickListener {
 	@SuppressLint("UnlocalizedSms")
 	@Override
 	public void onClick(View v) {
-		// send SMS with the word BAL to 7801
-		SmsManager smsManager = SmsManager.getDefault();
-		smsManager.sendTextMessage("7801", null, "BAL", null, null);
-	}
+        switch (v.getId())
+        {
+        case R.id.send_sms_button:
+            sendSMS7801();
+            break;
+        case R.id.call_customer_care:
+            callCustomerCare();
+            break;
+        }
+    }
+
+    private void sendSMS7801()
+    {
+        // send SMS with the word BAL to 7801
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("7801", null, "BAL", null, null);
+    }
+
+    private void callCustomerCare()
+    {
+        //TODO Call Customer Care....611 [SEND]
+    }
+
+
 
 }
