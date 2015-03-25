@@ -12,12 +12,15 @@ import android.widget.Button;
 
 import mobi.ccjr.ptel.R;
 
-public class SendFragment extends Fragment implements OnClickListener {
+public class SendFragment
+        extends Fragment
+        implements OnClickListener {
 
     private Button sendButton, callCustomerCareButton;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_send, container, false);
@@ -35,12 +38,12 @@ public class SendFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.send_sms_button:
-                sendSMS7801();
-                break;
-            case R.id.call_customer_care:
-                callCustomerCare();
-                break;
+        case R.id.send_sms_button:
+            sendSMS7801();
+            break;
+        case R.id.call_customer_care:
+            callCustomerCare();
+            break;
         }
     }
 

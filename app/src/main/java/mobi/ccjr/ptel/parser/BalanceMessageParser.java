@@ -6,8 +6,11 @@ package mobi.ccjr.ptel.parser;
  * @author ccarneiroj
  */
 public class BalanceMessageParser {
+
     private static final String ENTRY_DELIMITER = "Airtime:";
+
     private static final String EXPIRY_PREFIX = "Srvc Exp.:";
+
     private String text;
 
     public BalanceMessageParser(String text) {
@@ -17,8 +20,11 @@ public class BalanceMessageParser {
     public String extractBalance() {
         String[] parts = text.split("[|]", -1);
         if (parts.length == 4) {
-            return parts[2].trim().substring(ENTRY_DELIMITER.length()).trim();
-        } else {
+            return parts[2].trim()
+                           .substring(ENTRY_DELIMITER.length())
+                           .trim();
+        }
+        else {
             return null;
         }
     }
@@ -26,8 +32,11 @@ public class BalanceMessageParser {
     public String extractExpiry() {
         String[] parts = text.split("[|]", -1);
         if (parts.length == 4) {
-            return parts[1].trim().substring(EXPIRY_PREFIX.length()).trim();
-        } else {
+            return parts[1].trim()
+                           .substring(EXPIRY_PREFIX.length())
+                           .trim();
+        }
+        else {
             return null;
         }
     }
