@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
+import mobi.ccjr.ptel.notification.LowBalanceNotification;
 
 public class MainActivity
         extends Activity {
@@ -31,6 +32,9 @@ public class MainActivity
             TextView expiryTextView = (TextView)findViewById(R.id.recent_expiry);
             expiryTextView.setText(balance.getExpiry());
         }
+
+        LowBalanceNotification notification = new LowBalanceNotification();
+        notification.notify(this);
     }
 
     @Override
