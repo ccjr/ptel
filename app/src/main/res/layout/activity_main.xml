@@ -16,20 +16,22 @@
 
     <TextView
         android:id="@+id/recent_balance"
-        android:layout_below="@+id/send_fragment"
         android:layout_width="fill_parent"
-        android:text="kaboom"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_fragment"
         android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:padding="@dimen/large_padding"
+        android:text="kaboom"
+        android:textAppearance="@style/HugeTextStyle" />
 
     <TextView
         android:id="@+id/recent_expiry"
-        android:layout_below="@+id/recent_balance"
         android:layout_width="fill_parent"
-        android:text="zoooom"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recent_balance"
         android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:padding="@dimen/large_padding"
+        android:text="zoooom"
+        android:textAppearance="@style/BigTextStyle" />
 
 </RelativeLayout>
