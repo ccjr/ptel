@@ -1,14 +1,21 @@
 package mobi.ccjr.ptel;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.notification.LowBalanceNotification;
+import mobi.ccjr.ptel.ui.FloatingActionButton;
 
 public class MainActivity
         extends Activity {
@@ -19,6 +26,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
         setMostRecentBalanceInfo();
+        addPurchaseAirtimeButton();
     }
 
     private void setMostRecentBalanceInfo() {
@@ -32,6 +40,24 @@ public class MainActivity
             TextView expiryTextView = (TextView)findViewById(R.id.recent_expiry);
             expiryTextView.setText(balance.getExpiry());
         }
+    }
+
+    private void addPurchaseAirtimeButton() {
+        FloatingActionButton fabButton = new FloatingActionButton.Builder(this)
+                .withDrawable(getResources().getDrawable(R.drawable.ic_money))
+                .withButtonColor(Color.RED)
+                .withGravity(Gravity.BOTTOM | Gravity.RIGHT)
+                .withMargins(0, 0, 16, 16)
+                .create();
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO refactor code like this into a class that handles call/sms to operator
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:233"));
+                startActivity(callIntent);
+            }
+        });
     }
 
     @Override
