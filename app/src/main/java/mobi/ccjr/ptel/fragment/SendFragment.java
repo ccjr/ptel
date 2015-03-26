@@ -2,6 +2,8 @@ package mobi.ccjr.ptel.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
@@ -54,7 +56,10 @@ public class SendFragment
     }
 
     private void callCustomerCare() {
-        // TODO Call Customer Care....611 [SEND]
+        // call customer service at 611
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:611"));
+        startActivity(callIntent);
     }
 
 
