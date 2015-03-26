@@ -32,9 +32,6 @@ public class MainActivity
             TextView expiryTextView = (TextView)findViewById(R.id.recent_expiry);
             expiryTextView.setText(balance.getExpiry());
         }
-
-        LowBalanceNotification notification = new LowBalanceNotification();
-        notification.notify(this);
     }
 
     @Override
