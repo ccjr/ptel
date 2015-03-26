@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import mobi.ccjr.ptel.data.BalanceDAO;
+import mobi.ccjr.ptel.model.Balance;
 
 public class MainActivity
         extends Activity {
@@ -12,6 +16,21 @@ public class MainActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setMostRecentBalanceInfo();
+    }
+
+    private void setMostRecentBalanceInfo() {
+        BalanceDAO dao = new BalanceDAO(this);
+        Balance balance = dao.findMostRecent();
+
+        if (balance != null) {
+            TextView balanceTextView = (TextView)findViewById(R.id.recent_balance);
+            balanceTextView.setText(balance.getBalance());
+
+            TextView expiryTextView = (TextView)findViewById(R.id.recent_expiry);
+            expiryTextView.setText(balance.getExpiry());
+        }
     }
 
     @Override

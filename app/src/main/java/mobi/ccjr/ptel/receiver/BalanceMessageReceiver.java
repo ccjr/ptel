@@ -3,13 +3,12 @@ package mobi.ccjr.ptel.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
-import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.model.Balance;
+import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.parser.BalanceMessageParser;
 
 public class BalanceMessageReceiver
@@ -34,15 +33,12 @@ public class BalanceMessageReceiver
 
     private void persistBalance(Context context, String message) {
         BalanceMessageParser parser = new BalanceMessageParser(message);
-
-        // TODO move this code to its own class
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(context.getString(R.string.saved_balance), parser.extractBalance());
-        editor.commit();
+        BalanceDAO dao = new BalanceDAO(context);
+        Balance balance = new Balance(parser.extractBalance(), parser.extractExpiry());
+        dao.save(balance);
 
         Toast toast = Toast.makeText(context,
-                                     "message: " + parser.extractBalance(),
+                                     "balance: " + parser.extractBalance(),
                                      Toast.LENGTH_LONG);
         toast.show();
     }

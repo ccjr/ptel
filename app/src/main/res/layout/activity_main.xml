@@ -9,9 +9,27 @@
     tools:context="mobi.ccjr.ptel.MainActivity">
 
     <fragment
-        android:id="@+id/parent_hierarchy"
+        android:id="@+id/send_fragment"
         android:name="mobi.ccjr.ptel.fragment.SendFragment"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/recent_balance"
+        android:layout_below="@+id/send_fragment"
+        android:layout_width="fill_parent"
+        android:text="kaboom"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/recent_expiry"
+        android:layout_below="@+id/recent_balance"
+        android:layout_width="fill_parent"
+        android:text="zoooom"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>
