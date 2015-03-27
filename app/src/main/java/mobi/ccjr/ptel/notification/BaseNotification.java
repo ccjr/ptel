@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import mobi.ccjr.ptel.MainActivity;
+import mobi.ccjr.ptel.activity.MainActivity;
 import mobi.ccjr.ptel.R;
 
 public class BaseNotification {

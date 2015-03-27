@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/prefs_txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:text="@string/settings"
+        android:textSize="@dimen/item_text" />
+
+    <LinearLayout
+        android:id="@+id/prefs_linSep1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/prefs_txtTitle"
+        android:background="@color/normal_blue"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/prefs_linSep2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/prefs_linExpDate"
+        android:background="@color/normal_blue"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/prefs_linSep3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/prefs_linLowCredit"
+        android:background="@color/normal_blue"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/prefs_linSep4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/prefs_linAlarmFrequency"
+        android:background="@color/normal_blue"
+        android:orientation="horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/prefs_linExpDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prefs_linSep1"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/prefs_txtExpDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/expiration_days_alarm"
+            android:textSize="@dimen/item_text" />
+
+        <TextView
+            android:id="@+id/prefs_txtExpDateSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prefs_txtExpDateTitle"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/warn_credit_will_expire"
+            android:textSize="@dimen/subitem_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/prefs_txtDays"
+            android:layout_marginRight="10dp"
+            android:text="5 days"
+            android:textColor="@color/normal_blue"
+            android:textSize="@dimen/item_text" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/prefs_linLowCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prefs_linSep2"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/prefs_txtLowCreditTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/low_credit_alarm"
+            android:textSize="@dimen/item_text" />
+
+        <TextView
+            android:id="@+id/prefs_txtLowCreditSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prefs_txtLowCreditTitle"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/warn_low_credit"
+            android:textSize="@dimen/subitem_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/prefs_txtDollars"
+            android:layout_marginRight="10dp"
+            android:text="$ 4.99"
+            android:textColor="@color/normal_blue"
+            android:textSize="@dimen/item_text" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/prefs_linAlarmFrequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prefs_linSep3"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/prefs_txtFrequencyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Notification (or Check?) Frequency"
+            android:textSize="@dimen/item_text" />
+
+        <TextView
+            android:id="@+id/prefs_txtFrequencySubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prefs_txtFrequencyTitle"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="Check my balance every..."
+            android:textSize="@dimen/subitem_text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prefs_txtFrequencySubTitle"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="12hrs??  once a day? or @ specificTime?"
+            android:textColor="@color/normal_blue"
+            android:textSize="@dimen/item_text" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -9,4 +9,7 @@
 
     <dimen name="huge_text">60dp</dimen>
     <dimen name="big_text">40dp</dimen>
+
+    <dimen name="item_text">20sp</dimen>
+    <dimen name="subitem_text">14sp</dimen>
 </resources>
