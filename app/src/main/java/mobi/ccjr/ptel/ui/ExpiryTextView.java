@@ -4,6 +4,8 @@ import android.content.Context;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.AttributeSet;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -37,6 +39,7 @@ public class ExpiryTextView
         } else {
             this.setTextColor(getResources().getColor(R.color.red_alarm));
         }
+        this.blink();
     }
 
     private Spanned getExpiryText() {
@@ -48,6 +51,14 @@ public class ExpiryTextView
         Date date1 = new Date();
         Date date2 = balance.getExpiryAsDate();
         return DateCalculation.daysBetweenDates(date1, date2);
+    }
+
+    private void blink() {
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(250);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(4);
+        startAnimation(anim);
     }
 
     private String getExpiryInWords() {
