@@ -3,4 +3,5 @@
     <color name="light_blue">#FF75d6ff</color>
     <color name="normal_blue">#FF009cdb</color>
     <color name="dark_blue">#ff0082b8</color>
+    <color name="red_alarm">#ffb82621</color>
 </resources>
