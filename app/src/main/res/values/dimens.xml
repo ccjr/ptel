@@ -7,4 +7,6 @@
     <dimen name="large_padding">20dp</dimen>
     <dimen name="medium_padding">8dp</dimen>
 
+    <dimen name="huge_text">60dp</dimen>
+    <dimen name="big_text">40dp</dimen>
 </resources>
