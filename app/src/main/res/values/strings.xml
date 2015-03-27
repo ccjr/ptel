@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ptel</string>
+    <string name="app_name">PTEL Mobile - unofficial</string>
     <string name="check_balance">Check balance</string>
     <string name="action_settings">Settings</string>
     <string name="call_customer_care">Call Customer Care</string>

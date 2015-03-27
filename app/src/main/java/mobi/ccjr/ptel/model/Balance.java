@@ -1,5 +1,10 @@
 package mobi.ccjr.ptel.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Balance {
     private String balance;
     private String expiry;
@@ -19,6 +24,17 @@ public class Balance {
 
     public String getExpiry() {
         return expiry;
+    }
+
+    public Date getExpiryAsDate() {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+        try {
+            return dateFormat.parse(expiry);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void setExpiry(String expiry) {

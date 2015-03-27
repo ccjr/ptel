@@ -15,6 +15,8 @@ import android.widget.TextView;
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.notification.LowBalanceNotification;
+import mobi.ccjr.ptel.ui.BalanceTextView;
+import mobi.ccjr.ptel.ui.ExpiryTextView;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
 
 public class MainActivity
@@ -34,11 +36,11 @@ public class MainActivity
         Balance balance = dao.findMostRecent();
 
         if (balance != null) {
-            TextView balanceTextView = (TextView)findViewById(R.id.recent_balance);
-            balanceTextView.setText(balance.getBalance());
+            BalanceTextView balanceTextView = (BalanceTextView)findViewById(R.id.recent_balance);
+            balanceTextView.setBalance(balance);
 
-            TextView expiryTextView = (TextView)findViewById(R.id.recent_expiry);
-            expiryTextView.setText(balance.getExpiry());
+            ExpiryTextView expiryTextView = (ExpiryTextView)findViewById(R.id.recent_expiry);
+            expiryTextView.setBalance(balance);
         }
     }
 

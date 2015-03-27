@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <TextView
+    <mobi.ccjr.ptel.ui.BalanceTextView
         android:id="@+id/recent_balance"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -25,13 +25,13 @@
         android:text="kaboom"
         android:textAppearance="@style/HugeTextStyle" />
 
-    <TextView
+    <mobi.ccjr.ptel.ui.ExpiryTextView
         android:id="@+id/recent_expiry"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/recent_balance"
         android:gravity="center"
-        android:padding="@dimen/large_padding"
+        android:padding="@dimen/medium_padding"
         android:text="zoooom"
         android:textAppearance="@style/BigTextStyle" />
 
