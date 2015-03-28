@@ -24,12 +24,7 @@ public class BalanceDAO {
         ContentValues values = new ContentValues();
         values.put(BalanceContract.BalanceEntry.COLUMN_NAME_BALANCE, balance.getBalance());
         values.put(BalanceContract.BalanceEntry.COLUMN_NAME_EXPIRY, balance.getExpiry());
-
-        // TODO: move date logic to model
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
-        Date date = new Date();
-        values.put(BalanceContract.BalanceEntry.COLUMN_NAME_CREATED_AT, dateFormat.format(date));
-
+        values.put(BalanceContract.BalanceEntry.COLUMN_NAME_CREATED_AT, balance.getNewCreatedAt());
         long id = db.insert(BalanceContract.BalanceEntry.TABLE_NAME, null, values);
         db.close();
 

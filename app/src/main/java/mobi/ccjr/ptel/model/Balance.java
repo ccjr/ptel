@@ -37,6 +37,11 @@ public class Balance {
         }
     }
 
+    public String getNewCreatedAt() {
+        DateFormat dateFormat = DateFormat.getDateTimeInstance();
+        return dateFormat.format(new Date());
+    }
+
     public boolean inExpiryAlarmState(Context context) {
         return daysUntilExpiry() <= UserPreference.expiryThresholdInDays(context);
     }
