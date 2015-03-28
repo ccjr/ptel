@@ -37,17 +37,12 @@ public class PrefsActivity
         rlDays.setOnClickListener(this);
         rlDollars.setOnClickListener(this);
 
-        mPrefs = this.getPreferences(MODE_PRIVATE);
-        mPrefs.getInt(Constants.PREFS_EXP_DAYS_ALARM,
-                      Constants.EXPIRY_ALARM_DEFAULT_THRESHOLD_IN_DAYS);
-
+        mPrefs = this.getSharedPreferences(Constants.PREFS_FILE_NAME, MODE_PRIVATE);
         setDays(mPrefs.getInt(Constants.PREFS_EXP_DAYS_ALARM,
                               Constants.EXPIRY_ALARM_DEFAULT_THRESHOLD_IN_DAYS));
 
         mTxtDollars.setText(convertToCurrency(mPrefs.getFloat(Constants.PREFS_LOW_BALANCE_ALARM,
                                                               Constants.BALANCE_ALARM_DEFAULT_THRESHOLD_IN_DOLLARS)));
-
-
     }
 
     private void setDays(int days) {
@@ -77,7 +72,6 @@ public class PrefsActivity
     }
 
     private void setDays(String value) {
-
         int days;
 
         try {
