@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import mobi.ccjr.ptel.utils.DateCalculation;
+
 public class Balance {
     private String balance;
     private String expiry;
@@ -39,5 +41,11 @@ public class Balance {
 
     public void setExpiry(String expiry) {
         this.expiry = expiry;
+    }
+
+    public long daysUntilExpiry() {
+        Date date1 = new Date();
+        Date date2 = getExpiryAsDate();
+        return DateCalculation.daysBetweenDates(date1, date2);
     }
 }
