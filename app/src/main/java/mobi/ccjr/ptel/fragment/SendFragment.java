@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.service.BalanceRequestService;
 
 public class SendFragment
         extends Fragment
@@ -50,9 +51,11 @@ public class SendFragment
     }
 
     private void sendSMS7801() {
-        // send SMS with the word BAL to 7801
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("7801", null, "BAL", null, null);
+        Intent intent = new Intent(Intent.ACTION_SYNC,
+                                   null,
+                                   this.getActivity(),
+                                   BalanceRequestService.class);
+        this.getActivity().startService(intent);
     }
 
     private void callCustomerCare() {
@@ -61,6 +64,4 @@ public class SendFragment
         callIntent.setData(Uri.parse("tel:611"));
         startActivity(callIntent);
     }
-
-
 }
