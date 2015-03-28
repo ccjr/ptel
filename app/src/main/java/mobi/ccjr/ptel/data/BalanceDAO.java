@@ -25,11 +25,15 @@ public class BalanceDAO {
         values.put(BalanceContract.BalanceEntry.COLUMN_NAME_BALANCE, balance.getBalance());
         values.put(BalanceContract.BalanceEntry.COLUMN_NAME_EXPIRY, balance.getExpiry());
 
+        // TODO: move date logic to model
         DateFormat dateFormat = DateFormat.getDateTimeInstance();
         Date date = new Date();
         values.put(BalanceContract.BalanceEntry.COLUMN_NAME_CREATED_AT, dateFormat.format(date));
 
-        return db.insert(BalanceContract.BalanceEntry.TABLE_NAME, null, values);
+        long id = db.insert(BalanceContract.BalanceEntry.TABLE_NAME, null, values);
+        db.close();
+
+        return id;
     }
 
     public Balance findMostRecent() {
@@ -44,6 +48,7 @@ public class BalanceDAO {
             balance = new Balance(cursor.getString(0), cursor.getString(1));
         }
         cursor.close();
+        db.close();
 
         return balance;
     }
