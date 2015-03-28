@@ -20,9 +20,9 @@ public class DateCalculation {
 
     /**
      * Number of days between 2 dates
-     * @param date1
-     * @param date2
-     * @return
+     * @param date1 the oldest date
+     * @param date2 the newest date
+     * @return number of days between dates
      */
     public static long daysBetweenDates(Date date1, Date date2) {
         return getDateDiff(date1, date2, TimeUnit.DAYS);
