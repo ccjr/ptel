@@ -1,5 +1,7 @@
 package mobi.ccjr.ptel.model;
 
+import android.content.Context;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,10 +22,6 @@ public class Balance {
         return balance;
     }
 
-    public void setBalance(String balance) {
-        this.balance = balance;
-    }
-
     public String getExpiry() {
         return expiry;
     }
@@ -39,8 +37,8 @@ public class Balance {
         }
     }
 
-    public void setExpiry(String expiry) {
-        this.expiry = expiry;
+    public boolean inExpiryAlarmState(Context context) {
+        return daysUntilExpiry() <= UserPreference.expiryThresholdInDays(context);
     }
 
     public long daysUntilExpiry() {

@@ -8,12 +8,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
 
-import java.util.Date;
-
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.model.Balance;
-import mobi.ccjr.ptel.model.UserPreference;
-import mobi.ccjr.ptel.utils.DateCalculation;
 
 public class ExpiryTextView
         extends TextView {
@@ -34,7 +30,7 @@ public class ExpiryTextView
     public void setBalance(Balance balance) {
         this.balance = balance;
         this.setText(getExpiryText());
-        if (inAlarmState()) {
+        if (balance.inExpiryAlarmState(getContext())) {
             this.setTextColor(getResources().getColor(R.color.red_alarm));
             this.blink();
         }
@@ -43,12 +39,16 @@ public class ExpiryTextView
         }
     }
 
-    private boolean inAlarmState() {
-        return balance.daysUntilExpiry() <= UserPreference.expiryThresholdInDays(getContext());
-    }
-
     private Spanned getExpiryText() {
-        String html = "<small>credit expires in</small><br>" + getExpiryInWords();
+        long days = balance.daysUntilExpiry();
+        String html;
+        if (days > 0) {
+            html = "<small>credit expires in</small><br>" + days + " days";
+        } else if (days == 0) {
+            html = "<small>credit expires</small><br>today";
+        } else {
+            html = "<small>credit expired</small><br>already";
+        }
         return Html.fromHtml(html);
     }
 
@@ -58,11 +58,5 @@ public class ExpiryTextView
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(4);
         startAnimation(anim);
-    }
-
-    private String getExpiryInWords() {
-        // TODO: support expiring today and in past
-        long days = balance.daysUntilExpiry();
-        return days + " days";
     }
 }
