@@ -6,4 +6,6 @@ public class Constants {
     public static final String PREFS_EXP_DAYS_ALARM = "exp_days_alarm";
     public static final String PREFS_LOW_BALANCE_ALARM = "exp_low_bal_alarm";
 
+    public static final String SMS_BALANCE_REQUEST_NUMBER = "7801";
+    public static final String SMS_BALANCE_REQUEST_COMMAND = "BAL";
 }
