@@ -24,11 +24,11 @@ public class PrefsActivity
     TextView mTxtDollars;
     private SharedPreferences mPrefs;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         mTxtDays = (TextView) findViewById(R.id.prefs_txtDays);
         mTxtDollars = (TextView) findViewById(R.id.prefs_txtDollars);
