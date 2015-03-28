@@ -1,7 +1,9 @@
 package mobi.ccjr.ptel.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
+import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
 import mobi.ccjr.ptel.ui.BalanceTextView;
 import mobi.ccjr.ptel.ui.ExpiryTextView;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
@@ -27,6 +30,7 @@ public class MainActivity
 
         setMostRecentBalanceInfo();
         addPurchaseAirtimeButton();
+        //enableBootReceiver();
     }
 
     @Override
@@ -46,6 +50,15 @@ public class MainActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void enableBootReceiver() {
+        ComponentName receiver = new ComponentName(this, BootCompletedReceiver.class);
+        PackageManager pm = getPackageManager();
+
+        pm.setComponentEnabledSetting(receiver,
+                                      PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                      PackageManager.DONT_KILL_APP);
     }
 
     private void setMostRecentBalanceInfo() {
