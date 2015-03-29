@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 import mobi.ccjr.ptel.model.Balance;
 
 public class BalanceDAO {

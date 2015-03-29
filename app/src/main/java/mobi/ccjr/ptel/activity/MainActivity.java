@@ -81,7 +81,7 @@ public class MainActivity
                                                                                        Color.RED)
                                                                                .withGravity(
                                                                                        Gravity.BOTTOM |
-                                                                                       Gravity.RIGHT)
+                                                                                       Gravity.END)
                                                                                .withMargins(0,
                                                                                             0,
                                                                                             16,
