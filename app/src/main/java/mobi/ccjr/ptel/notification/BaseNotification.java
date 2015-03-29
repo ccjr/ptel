@@ -8,8 +8,14 @@ import android.support.v4.app.NotificationCompat;
 
 import mobi.ccjr.ptel.activity.MainActivity;
 import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.model.Balance;
 
 public class BaseNotification {
+    protected Balance balance;
+
+    public BaseNotification(Balance balance) {
+        this.balance = balance;
+    }
 
     public void notify(Context context, String title, String text) {
         NotificationCompat.Builder mBuilder =
