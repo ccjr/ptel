@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    style="@style/LayoutStyle"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,6 +48,7 @@
 
     <RelativeLayout
         android:id="@+id/prefs_linExpDate"
+        style="@style/LayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/prefs_linSep1"
@@ -74,13 +77,13 @@
             android:textSize="@dimen/subitem_text" />
 
         <TextView
+            android:id="@+id/prefs_txtDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
-            android:id="@+id/prefs_txtDays"
             android:layout_marginRight="10dp"
             android:text="5 days"
             android:textColor="@color/normal_blue"
@@ -89,6 +92,7 @@
 
     <RelativeLayout
         android:id="@+id/prefs_linLowCredit"
+        style="@style/LayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/prefs_linSep2"
@@ -117,13 +121,13 @@
             android:textSize="@dimen/subitem_text" />
 
         <TextView
+            android:id="@+id/prefs_txtDollars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
-            android:id="@+id/prefs_txtDollars"
             android:layout_marginRight="10dp"
             android:text="$ 4.99"
             android:textColor="@color/normal_blue"
@@ -133,6 +137,7 @@
 
     <RelativeLayout
         android:id="@+id/prefs_linAlarmFrequency"
+        style="@style/LayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/prefs_linSep3"
@@ -164,9 +169,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/prefs_txtFrequencySubTitle"
-            android:gravity="center"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
+            android:gravity="center"
             android:text="12hrs??  once a day? or @ specificTime?"
             android:textColor="@color/normal_blue"
             android:textSize="@dimen/item_text" />

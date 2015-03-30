@@ -25,4 +25,7 @@
         <item name="android:textSize">@dimen/big_text</item>
         <item name="android:textColor">@color/normal_blue</item>
     </style>
+    <style name="LayoutStyle">
+        <item name="android:background">@drawable/click_effect</item>
+    </style>
 </resources>
