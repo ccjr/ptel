@@ -2,14 +2,20 @@ package mobi.ccjr.ptel.notification;
 
 import android.content.Context;
 
+import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.model.Balance;
+
 public class LowBalanceNotification
         extends BaseNotification {
 
-    public void notify(Context context) {
-        // TODO strings in strings.xml
-        notify(context,
-               "PTEL Mobile - Credit Expiry",
-               "Your credit expiry date is approaching soon - 3 days left.");
+    public LowBalanceNotification(Balance balance) {
+        super(balance);
     }
 
+    public void notify(Context context) {
+        notify(context,
+               context.getString(R.string.notification_balance_title),
+               context.getString(R.string.notification_balance_body) + " " +
+               balance.getExpiryAsDate());
+    }
 }

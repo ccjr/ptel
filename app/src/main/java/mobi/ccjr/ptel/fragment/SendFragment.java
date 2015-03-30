@@ -2,7 +2,6 @@ package mobi.ccjr.ptel.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.Button;
 
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.service.BalanceRequestService;
+import mobi.ccjr.ptel.utils.Caller;
 
 public class SendFragment
         extends Fragment
@@ -50,13 +50,11 @@ public class SendFragment
                                    null,
                                    this.getActivity(),
                                    BalanceRequestService.class);
-        this.getActivity().startService(intent);
+        this.getActivity()
+            .startService(intent);
     }
 
     private void callCustomerCare() {
-        // call customer service at 611
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:611"));
-        startActivity(callIntent);
+        Caller.callCustomerService(this.getActivity());
     }
 }

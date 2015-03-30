@@ -5,7 +5,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -19,6 +18,7 @@ import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
 import mobi.ccjr.ptel.ui.BalanceTextView;
 import mobi.ccjr.ptel.ui.ExpiryTextView;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
+import mobi.ccjr.ptel.utils.Caller;
 
 public class MainActivity
         extends Activity {
@@ -81,7 +81,7 @@ public class MainActivity
                                                                                        Color.RED)
                                                                                .withGravity(
                                                                                        Gravity.BOTTOM |
-                                                                                       Gravity.RIGHT)
+                                                                                       Gravity.END)
                                                                                .withMargins(0,
                                                                                             0,
                                                                                             16,
@@ -90,10 +90,7 @@ public class MainActivity
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO refactor code like this into a class that handles call/sms to operator
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:233"));
-                startActivity(callIntent);
+                Caller.callAddCredit(getApplicationContext());
             }
         });
     }

@@ -8,7 +8,7 @@ import mobi.ccjr.ptel.utils.Constants;
 public class UserPreference {
     public static int expiryThresholdInDays(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(Constants.PREFS_FILE_NAME,
-                                                               context.MODE_PRIVATE);
+                                                               Context.MODE_PRIVATE);
         return prefs.getInt(Constants.PREFS_EXP_DAYS_ALARM,
                             Constants.EXPIRY_ALARM_DEFAULT_THRESHOLD_IN_DAYS);
     }
