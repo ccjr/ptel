@@ -167,8 +167,8 @@ public class PrefsActivity
                .setView(input)
                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int whichButton) {
-                       dialog.cancel();
                        showKeyboard(input, false);
+                       dialog.cancel();
                    }
                });
 
