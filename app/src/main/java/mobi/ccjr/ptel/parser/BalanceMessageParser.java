@@ -8,7 +8,6 @@ package mobi.ccjr.ptel.parser;
 public class BalanceMessageParser {
 
     private static final String ENTRY_DELIMITER = "Airtime:";
-
     private static final String EXPIRY_PREFIX = "Srvc Exp.:";
 
     private String text;
@@ -18,6 +17,7 @@ public class BalanceMessageParser {
     }
 
     public String extractBalance() {
+        // TODO discard $
         String[] parts = text.split("[|]", -1);
         if (parts.length == 4) {
             return parts[2].trim()

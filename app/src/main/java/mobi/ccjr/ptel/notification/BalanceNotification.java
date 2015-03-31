@@ -10,12 +10,14 @@ import mobi.ccjr.ptel.activity.MainActivity;
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.model.Balance;
 
-public class BaseNotification {
+public abstract class BalanceNotification {
     protected Balance balance;
 
-    public BaseNotification(Balance balance) {
+    public BalanceNotification(Balance balance) {
         this.balance = balance;
     }
+
+    public abstract void notify(Context context);
 
     public void notify(Context context, String title, String text) {
         NotificationCompat.Builder mBuilder =

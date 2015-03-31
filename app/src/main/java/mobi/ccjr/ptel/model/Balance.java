@@ -2,6 +2,7 @@ package mobi.ccjr.ptel.model;
 
 import android.content.Context;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,13 +38,25 @@ public class Balance {
         }
     }
 
+    public BigDecimal getBalanceAsBigDecimal() {
+        return new BigDecimal(balance);
+    }
+
     public String getNewCreatedAt() {
         DateFormat dateFormat = DateFormat.getDateTimeInstance();
         return dateFormat.format(new Date());
     }
 
+    public boolean inFullAlarmState(Context context) {
+        return inExpiryAlarmState(context) && inBalanceAlarmState(context);
+    }
+
     public boolean inExpiryAlarmState(Context context) {
         return daysUntilExpiry() <= UserPreference.expiryThresholdInDays(context);
+    }
+
+    public boolean inBalanceAlarmState(Context context) {
+        return (getBalanceAsBigDecimal().compareTo(UserPreference.balanceThresholdInDollars(context)) < 0);
     }
 
     public long daysUntilExpiry() {

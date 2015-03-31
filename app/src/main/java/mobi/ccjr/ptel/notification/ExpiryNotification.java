@@ -6,7 +6,7 @@ import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.model.Balance;
 
 public class ExpiryNotification
-        extends BaseNotification {
+        extends BalanceNotification {
 
     public ExpiryNotification(Balance balance) {
         super(balance);
@@ -15,6 +15,6 @@ public class ExpiryNotification
     public void notify(Context context) {
         notify(context,
                context.getString(R.string.notification_expiry_title),
-               context.getString(R.string.notification_expiry_body) + " " + balance.getBalance());
+               context.getString(R.string.notification_expiry_body));
     }
 }

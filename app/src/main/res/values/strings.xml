@@ -11,10 +11,12 @@
 
     <string name="low_credit_alarm">Low Balance Alarm…</string>
 
-    <string name="notification_balance_body">Your current balance is: </string>
-    <string name="notification_balance_title">PTEL Mobile - Balance</string>
-    <string name="notification_expiry_body">Your credit expiry date is approaching soon: </string>
-    <string name="notification_expiry_title">PTEL Mobile - Credit Expiry</string>
+    <string name="notification_balance_body">Your credit is low.</string>
+    <string name="notification_balance_title">PTEL Mobile - Low Balance</string>
+    <string name="notification_expiry_body">Your credit will expire soon.</string>
+    <string name="notification_expiry_title">PTEL Mobile - Credit Expiring</string>
+    <string name="notification.expiry_balance.body">Your credit is low and will expire soon.</string>
+    <string name="notification.expiry_balance.title">PTEL Mobile - Low/expiring credit</string>
 
     <string name="settings">Settings</string>
 
