@@ -58,24 +58,9 @@ public class BalanceMessageReceiver
     }
 
     private void notifyUserIfAppropriate(Balance balance) {
-        BalanceNotification notification = notificationForBalance(balance);
+        BalanceNotification notification = BalanceNotification.getNotification(context, balance);
         if (notification != null) {
             notification.notify(context);
         }
-    }
-
-    private BalanceNotification notificationForBalance(Balance balance) {
-        BalanceNotification notification = null;
-        if (balance.inFullAlarmState(context)) {
-            notification = new LowBalanceExpiringNotification(balance);
-        }
-        else if (balance.inExpiryAlarmState(context)) {
-            notification = new ExpiryNotification(balance);
-        }
-        else if (balance.inBalanceAlarmState(context)) {
-            notification = new LowBalanceNotification(balance);
-        }
-
-        return notification;
     }
 }

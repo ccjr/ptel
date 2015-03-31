@@ -39,4 +39,18 @@ public abstract class BalanceNotification {
         mNotificationManager.notify(0, mBuilder.build());
     }
 
+    public static BalanceNotification getNotification(Context context, Balance balance) {
+        BalanceNotification notification = null;
+        if (balance.inFullAlarmState(context)) {
+            notification = new LowBalanceExpiringNotification(balance);
+        }
+        else if (balance.inExpiryAlarmState(context)) {
+            notification = new ExpiryNotification(balance);
+        }
+        else if (balance.inBalanceAlarmState(context)) {
+            notification = new LowBalanceNotification(balance);
+        }
+
+        return notification;
+    }
 }
