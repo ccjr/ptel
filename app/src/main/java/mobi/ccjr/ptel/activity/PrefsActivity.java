@@ -79,8 +79,7 @@ public class PrefsActivity
     protected void onPause() {
         super.onPause();
         if (input != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
+            showKeyboard(input, false);
         }
     }
 
@@ -169,6 +168,7 @@ public class PrefsActivity
                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int whichButton) {
                        dialog.cancel();
+                       showKeyboard(input, false);
                    }
                });
 
