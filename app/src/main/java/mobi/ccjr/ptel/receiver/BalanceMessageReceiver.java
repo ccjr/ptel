@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.widget.Toast;
 
+import mobi.ccjr.ptel.activity.MainActivity;
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.notification.BalanceNotification;
@@ -16,6 +16,7 @@ import mobi.ccjr.ptel.utils.Constants;
 public class BalanceMessageReceiver
         extends BroadcastReceiver {
     private Context context;
+    private MainActivity activity;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -32,7 +33,7 @@ public class BalanceMessageReceiver
                     String message = msgs[i].getMessageBody();
 
                     Balance balance = persistBalance(message);
-                    updateInterfaceIfAppropriate(balance);
+                    updateInterfaceIfAppropriate();
                     notifyUserIfAppropriate(balance);
                 }
             }
@@ -47,11 +48,14 @@ public class BalanceMessageReceiver
         return balance;
     }
 
-    private void updateInterfaceIfAppropriate(Balance balance) {
-        // TODO: update the UI if application is running
-        String text = "balance/expiry: " + balance.getBalance() + " - " + balance.getExpiry();
-        Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-        toast.show();
+    private void updateInterfaceIfAppropriate() {
+        if (activity != null) {
+            activity.onBalanceUpdate();
+        }
+    }
+
+    public void setActivity(MainActivity activity) {
+        this.activity = activity;
     }
 
     private void notifyUserIfAppropriate(Balance balance) {

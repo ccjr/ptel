@@ -3,6 +3,7 @@ package mobi.ccjr.ptel.activity;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
+import mobi.ccjr.ptel.receiver.BalanceMessageReceiver;
 import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
 import mobi.ccjr.ptel.ui.BalanceTextView;
 import mobi.ccjr.ptel.ui.ExpiryTextView;
@@ -23,6 +25,8 @@ import mobi.ccjr.ptel.utils.Caller;
 public class MainActivity
         extends Activity {
 
+    private BalanceMessageReceiver balanceMessageReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,14 @@ public class MainActivity
         setMostRecentBalanceInfo();
         addPurchaseAirtimeButton();
         //enableBootReceiver();
+        registerBalanceMessageReceiver();
+    }
+
+    private void registerBalanceMessageReceiver() {
+        IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
+        balanceMessageReceiver = new BalanceMessageReceiver();
+        balanceMessageReceiver.setActivity(this);
+        registerReceiver(balanceMessageReceiver, filter);
     }
 
     @Override
@@ -93,5 +105,15 @@ public class MainActivity
                 Caller.callAddCredit(getApplicationContext());
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        unregisterReceiver(balanceMessageReceiver);
+        super.onDestroy();
+    }
+
+    public void onBalanceUpdate() {
+        setMostRecentBalanceInfo();
     }
 }
