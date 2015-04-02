@@ -10,9 +10,6 @@ import android.widget.Toast;
 import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.notification.BalanceNotification;
-import mobi.ccjr.ptel.notification.ExpiryNotification;
-import mobi.ccjr.ptel.notification.LowBalanceExpiringNotification;
-import mobi.ccjr.ptel.notification.LowBalanceNotification;
 import mobi.ccjr.ptel.parser.BalanceMessageParser;
 import mobi.ccjr.ptel.utils.Constants;
 
