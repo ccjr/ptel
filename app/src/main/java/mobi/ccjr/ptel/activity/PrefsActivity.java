@@ -99,9 +99,7 @@ public class PrefsActivity
         mPrefs.edit()
               .putInt(Constants.PREFS_EXP_DAYS_ALARM, days)
               .apply();
-
-        mTxtDays.setText(String.valueOf(days == 1 ? days + " day" : days + " days"));
-        //TODO improve singular / plural
+        mTxtDays.setText(getResources().getQuantityString(R.plurals.days, days, days));
     }
 
     private void setDays(String value) {
