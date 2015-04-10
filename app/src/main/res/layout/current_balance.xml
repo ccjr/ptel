@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <mobi.ccjr.ptel.ui.BalanceTextView
+        android:id="@+id/balance_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_fragment"
+        android:gravity="center"
+        android:padding="@dimen/large_padding"
+        android:text="kaboom"
+        android:textAppearance="@style/HugeTextStyle" />
+
+    <mobi.ccjr.ptel.ui.ExpiryTextView
+        android:id="@+id/expiry_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recent_balance"
+        android:gravity="center"
+        android:padding="@dimen/medium_padding"
+        android:text="zoooom"
+        android:textAppearance="@style/BigTextStyle" />
+
+</LinearLayout>

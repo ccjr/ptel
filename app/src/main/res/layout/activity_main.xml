@@ -10,29 +10,9 @@
     tools:context="mobi.ccjr.ptel.activity.MainActivity">
 
     <fragment
-        android:id="@+id/send_fragment"
-        android:name="mobi.ccjr.ptel.fragment.SendFragment"
-        android:layout_width="wrap_content"
+        android:id="@+id/current_balance_fragment"
+        android:name="mobi.ccjr.ptel.fragment.CurrentBalanceFragment"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-
-    <mobi.ccjr.ptel.ui.BalanceTextView
-        android:id="@+id/recent_balance"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/send_fragment"
-        android:gravity="center"
-        android:padding="@dimen/large_padding"
-        android:text="kaboom"
-        android:textAppearance="@style/HugeTextStyle" />
-
-    <mobi.ccjr.ptel.ui.ExpiryTextView
-        android:id="@+id/recent_expiry"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recent_balance"
-        android:gravity="center"
-        android:padding="@dimen/medium_padding"
-        android:text="zoooom"
-        android:textAppearance="@style/BigTextStyle" />
 
 </RelativeLayout>

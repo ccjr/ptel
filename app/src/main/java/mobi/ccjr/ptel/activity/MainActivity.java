@@ -1,6 +1,7 @@
 package mobi.ccjr.ptel.activity;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,14 +12,14 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.data.BalanceDAO;
+import mobi.ccjr.ptel.fragment.CurrentBalanceFragment;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.receiver.BalanceMessageReceiver;
 import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
-import mobi.ccjr.ptel.ui.BalanceTextView;
-import mobi.ccjr.ptel.ui.ExpiryTextView;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
 import mobi.ccjr.ptel.utils.Caller;
 
@@ -26,11 +27,15 @@ public class MainActivity
         extends Activity {
 
     private BalanceMessageReceiver balanceMessageReceiver;
+    private CurrentBalanceFragment currentBalanceFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentManager fm = getFragmentManager();
+        currentBalanceFragment = (CurrentBalanceFragment) fm.findFragmentById(R.id.current_balance_fragment);
 
         setMostRecentBalanceInfo();
         addPurchaseAirtimeButton();
@@ -47,7 +52,6 @@ public class MainActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -59,8 +63,13 @@ public class MainActivity
             Intent intent = new Intent(this, PrefsActivity.class);
             startActivity(intent);
             break;
+        case R.id.call_customer_care:
+            Caller.callCustomerService(this);
+            break;
+        case R.id.check_balance_menu_item:
+            Caller.checkBalance(this);
+            break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -78,11 +87,7 @@ public class MainActivity
         Balance balance = dao.findMostRecent();
 
         if (balance != null) {
-            BalanceTextView balanceTextView = (BalanceTextView) findViewById(R.id.recent_balance);
-            balanceTextView.setBalance(balance);
-
-            ExpiryTextView expiryTextView = (ExpiryTextView) findViewById(R.id.recent_expiry);
-            expiryTextView.setBalance(balance);
+            currentBalanceFragment.setBalance(balance);
         }
     }
 
@@ -114,6 +119,9 @@ public class MainActivity
     }
 
     public void onBalanceUpdate() {
+        Toast toast = Toast.makeText(this, R.string.balance_update, Toast.LENGTH_SHORT);
+        toast.show();
+
         setMostRecentBalanceInfo();
     }
 }
