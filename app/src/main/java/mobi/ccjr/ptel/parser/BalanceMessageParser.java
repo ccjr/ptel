@@ -17,12 +17,12 @@ public class BalanceMessageParser {
     }
 
     public String extractBalance() {
-        // TODO discard $
         String[] parts = text.split("[|]", -1);
         if (parts.length == 4) {
             return parts[2].trim()
                            .substring(ENTRY_DELIMITER.length())
-                           .trim();
+                           .trim()
+                           .replace("$", "");
         }
         else {
             return null;
