@@ -12,7 +12,7 @@ import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.model.Balance;
 
 public class ExpiryTextView
-        extends TextView {
+        extends BlinkableTextView {
     private Balance balance;
 
     public ExpiryTextView(Context context, AttributeSet attrs, int defStyle) {
@@ -50,13 +50,5 @@ public class ExpiryTextView
             html = "<small>credit expired</small><br>already";
         }
         return Html.fromHtml(html);
-    }
-
-    private void blink() {
-        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(250);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(4);
-        startAnimation(anim);
     }
 }
