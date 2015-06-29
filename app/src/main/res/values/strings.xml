@@ -23,6 +23,10 @@
 
     <string name="warn_credit_will_expire">Warn me if balance will expire in less than…</string>
     <string name="warn_low_credit">Warn me if balance gets bellow…</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_text">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </string>
 
     <plurals name="days">
         <item quantity="one">%d day</item>
