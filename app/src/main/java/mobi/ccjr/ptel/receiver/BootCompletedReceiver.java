@@ -18,7 +18,6 @@ public class BootCompletedReceiver
         alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                                      SystemClock.elapsedRealtime(),
                                      AlarmManager.INTERVAL_DAY,
-                                     //1000 * 60,
                                      getServiceIntent(context));
     }
 
@@ -26,5 +25,4 @@ public class BootCompletedReceiver
         Intent intent = new Intent(context, BalanceRequestService.class);
         return PendingIntent.getService(context, 0, intent, 0);
     }
-
 }

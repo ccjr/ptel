@@ -29,34 +29,40 @@ public class MainActivity
 
     private BalanceMessageReceiver balanceMessageReceiver;
     private CurrentBalanceFragment currentBalanceFragment;
+    private boolean inFirstRunMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fm = getFragmentManager();
         if (UserPreference.firstRunComplete(this)) {
-            setupRegularUI(fm);
+            setupRegularUI();
         } else {
-            setupFirstRunUI(fm);
+            setupFirstRunUI();
         }
 
-        //enableBootReceiver();
+        enableBootReceiver();
         registerBalanceMessageReceiver();
     }
 
-    private void setupFirstRunUI(FragmentManager fragmentManager) {
+    private void setupFirstRunUI() {
+        inFirstRunMode = true;
+
+        FragmentManager fragmentManager = getFragmentManager();
         FirstRunFragment firstRunFragment = new FirstRunFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.main_layout, firstRunFragment);
+        fragmentTransaction.replace(R.id.main_layout, firstRunFragment);
         fragmentTransaction.commit();
     }
 
-    private void setupRegularUI(FragmentManager fragmentManager) {
+    private void setupRegularUI() {
+        inFirstRunMode = false;
+
+        FragmentManager fragmentManager = getFragmentManager();
         currentBalanceFragment = new CurrentBalanceFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.main_layout, currentBalanceFragment);
+        fragmentTransaction.replace(R.id.main_layout, currentBalanceFragment);
         fragmentTransaction.commit();
 
         addPurchaseAirtimeButton();
@@ -132,6 +138,11 @@ public class MainActivity
         Toast toast = Toast.makeText(this, R.string.balance_update, Toast.LENGTH_SHORT);
         toast.show();
 
-        currentBalanceFragment.setMostRecentBalanceInfo();
+        if (inFirstRunMode) {
+            setupRegularUI();
+            UserPreference.markFirstRunComplete(this);
+        } else {
+            currentBalanceFragment.setMostRecentBalanceInfo();
+        }
     }
 }
