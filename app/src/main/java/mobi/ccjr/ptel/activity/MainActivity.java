@@ -47,7 +47,7 @@ public class MainActivity
     }
 
     private void setupFirstRunUI(FragmentManager fragmentManager) {
-        FirstRunFragment firstRunFragment = FirstRunFragment.newInstance("a", "b");
+        FirstRunFragment firstRunFragment = new FirstRunFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main_layout, firstRunFragment);
         fragmentTransaction.commit();
