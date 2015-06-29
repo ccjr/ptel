@@ -24,8 +24,9 @@ public class Caller {
     }
 
     private static void call(Context context, String callUri) {
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse(callUri));
-        context.startActivity(callIntent);
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(callUri));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 }
