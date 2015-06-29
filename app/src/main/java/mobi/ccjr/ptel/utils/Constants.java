@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String PREFS_FILE_NAME = "ptel_prefs";
     public static final String PREFS_EXP_DAYS_ALARM = "exp_days_alarm";
+    public static final String PREFS_FIRST_RUN_COMPLETE = "first_run_complete";
     public static final String PREFS_LOW_BALANCE_ALARM = "exp_low_bal_alarm";
 
     public static final String SMS_BALANCE_REQUEST_NUMBER = "7801";

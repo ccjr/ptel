@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import mobi.ccjr.ptel.R;
 import mobi.ccjr.ptel.fragment.CurrentBalanceFragment;
+import mobi.ccjr.ptel.fragment.FirstRunFragment;
+import mobi.ccjr.ptel.model.UserPreference;
 import mobi.ccjr.ptel.receiver.BalanceMessageReceiver;
 import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
@@ -34,14 +36,30 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getFragmentManager();
-        currentBalanceFragment = new CurrentBalanceFragment();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.main_layout, currentBalanceFragment);
-        ft.commit();
+        if (UserPreference.firstRunComplete(this)) {
+            setupRegularUI(fm);
+        } else {
+            setupFirstRunUI(fm);
+        }
 
-        addPurchaseAirtimeButton();
         //enableBootReceiver();
         registerBalanceMessageReceiver();
+    }
+
+    private void setupFirstRunUI(FragmentManager fragmentManager) {
+        FirstRunFragment firstRunFragment = FirstRunFragment.newInstance("a", "b");
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main_layout, firstRunFragment);
+        fragmentTransaction.commit();
+    }
+
+    private void setupRegularUI(FragmentManager fragmentManager) {
+        currentBalanceFragment = new CurrentBalanceFragment();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main_layout, currentBalanceFragment);
+        fragmentTransaction.commit();
+
+        addPurchaseAirtimeButton();
     }
 
     private void registerBalanceMessageReceiver() {

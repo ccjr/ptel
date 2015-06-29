@@ -8,6 +8,12 @@ import java.math.BigDecimal;
 import mobi.ccjr.ptel.utils.Constants;
 
 public class UserPreference {
+    public static boolean firstRunComplete(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(Constants.PREFS_FILE_NAME,
+                                                               Context.MODE_PRIVATE);
+        return prefs.getBoolean(Constants.PREFS_FIRST_RUN_COMPLETE, false);
+    }
+
     public static int expiryThresholdInDays(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(Constants.PREFS_FILE_NAME,
                                                                Context.MODE_PRIVATE);
