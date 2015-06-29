@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.utils.Caller;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +26,11 @@ public class FirstRunFragment
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_first_run, container, false);
         checkBalanceButton = (Button) v.findViewById(R.id.check_balance);
+        checkBalanceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Caller.checkBalance(getActivity());
+            }
+        });
 
         return v;
     }
