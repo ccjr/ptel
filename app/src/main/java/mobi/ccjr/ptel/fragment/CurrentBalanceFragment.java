@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import mobi.ccjr.ptel.R;
+import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.ui.BalanceTextView;
 import mobi.ccjr.ptel.ui.ExpiryTextView;
@@ -27,6 +28,8 @@ public class CurrentBalanceFragment
         balanceTextView = (BalanceTextView) v.findViewById(R.id.balance_text_view);
         expiryTextView = (ExpiryTextView) v.findViewById(R.id.expiry_text_view);
 
+        setMostRecentBalanceInfo();
+
         return v;
     }
 
@@ -35,4 +38,12 @@ public class CurrentBalanceFragment
         expiryTextView.setBalance(balance);
     }
 
+    public void setMostRecentBalanceInfo() {
+        BalanceDAO dao = new BalanceDAO(this.getActivity());
+        Balance balance = dao.findMostRecent();
+
+        if (balance != null) {
+            setBalance(balance);
+        }
+    }
 }

@@ -9,10 +9,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="mobi.ccjr.ptel.activity.MainActivity">
 
-    <fragment
-        android:id="@+id/current_balance_fragment"
-        android:name="mobi.ccjr.ptel.fragment.CurrentBalanceFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>

@@ -2,6 +2,7 @@ package mobi.ccjr.ptel.activity;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,9 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import mobi.ccjr.ptel.R;
-import mobi.ccjr.ptel.data.BalanceDAO;
 import mobi.ccjr.ptel.fragment.CurrentBalanceFragment;
-import mobi.ccjr.ptel.model.Balance;
 import mobi.ccjr.ptel.receiver.BalanceMessageReceiver;
 import mobi.ccjr.ptel.receiver.BootCompletedReceiver;
 import mobi.ccjr.ptel.ui.FloatingActionButton;
@@ -35,9 +34,11 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getFragmentManager();
-        currentBalanceFragment = (CurrentBalanceFragment) fm.findFragmentById(R.id.current_balance_fragment);
+        currentBalanceFragment = new CurrentBalanceFragment();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.main_layout, currentBalanceFragment);
+        ft.commit();
 
-        setMostRecentBalanceInfo();
         addPurchaseAirtimeButton();
         //enableBootReceiver();
         registerBalanceMessageReceiver();
@@ -82,15 +83,6 @@ public class MainActivity
                                       PackageManager.DONT_KILL_APP);
     }
 
-    private void setMostRecentBalanceInfo() {
-        BalanceDAO dao = new BalanceDAO(this);
-        Balance balance = dao.findMostRecent();
-
-        if (balance != null) {
-            currentBalanceFragment.setBalance(balance);
-        }
-    }
-
     private void addPurchaseAirtimeButton() {
         FloatingActionButton fabButton = new FloatingActionButton.Builder(this).withDrawable(
                 getResources().getDrawable(R.drawable.ic_money))
@@ -122,6 +114,6 @@ public class MainActivity
         Toast toast = Toast.makeText(this, R.string.balance_update, Toast.LENGTH_SHORT);
         toast.show();
 
-        setMostRecentBalanceInfo();
+        currentBalanceFragment.setMostRecentBalanceInfo();
     }
 }
